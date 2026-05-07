@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-950 text-gray-100 antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  ::-webkit-scrollbar        { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track  { @apply bg-gray-900; }
+  ::-webkit-scrollbar-thumb  { @apply bg-gray-700 rounded-full; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-gray-500; }
+}
+
+@layer components {
+  .glass    { @apply bg-white/5 backdrop-blur-md border border-white/10; }
+  .card     { @apply bg-gray-900 border border-gray-800 rounded-xl p-5; }
+  .pill     { @apply inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium; }
+
+  .btn-primary {
+    @apply bg-brand-600 hover:bg-brand-700 active:bg-brand-800 text-white px-4 py-2
+           rounded-lg font-medium transition-all duration-150
+           disabled:opacity-40 disabled:cursor-not-allowed
+           focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 focus:ring-offset-gray-950;
+  }
+  .btn-ghost {
+    @apply text-gray-400 hover:text-gray-100 hover:bg-white/5 px-3 py-1.5
+           rounded-lg transition-all duration-150 focus:outline-none;
+  }
+  .input {
+    @apply bg-gray-900 border border-gray-700 text-gray-100 rounded-lg px-4 py-2.5
+           focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent
+           placeholder-gray-500 w-full transition-colors;
+  }
+
+  .tag-topic   { @apply pill bg-violet-500/20 text-violet-300 border border-violet-500/30; }
+  .tag-message { @apply pill bg-blue-500/20   text-blue-300   border border-blue-500/30;   }
+}
+
+/* dot-pulse typing indicator */
+@keyframes dotPulse {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+  40%           { transform: scale(1);   opacity: 1;   }
+}
+.dot-pulse span {
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: dotPulse 1.2s ease-in-out infinite;
+}
+.dot-pulse span:nth-child(2) { animation-delay: 0.2s; }
+.dot-pulse span:nth-child(3) { animation-delay: 0.4s; }
+
+/* message slide-up */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+.msg-enter { animation: slideUp 0.22s ease-out; }

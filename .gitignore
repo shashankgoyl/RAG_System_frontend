@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+.env
+venv/
+.venv/
+
+# Node
+node_modules/
+dist/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Optionally exclude pre-built data (remove line below to commit checkpoints for Render free tier)
+# backend/data/*.json
